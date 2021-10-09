@@ -12,7 +12,7 @@ terraform {
     resource_group_name  = "meta"
     storage_account_name = "hackathonterraform"
     container_name       = "tfstate"
-    key                  = "***CHANGEME****.tfstate"
+    key                  = "particiant11.tfstate"
   }
 }
 
@@ -27,7 +27,7 @@ variable "uniquename"{
 
 # locals block
 locals {
-  name     = var.uniquename
+  name     = "pat11"
   location = "West Europe"
 }
 

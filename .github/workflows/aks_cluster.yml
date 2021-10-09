@@ -10,6 +10,7 @@ jobs:
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
       TF_VAR_uniquename: ${{ secrets.UNIQUE_NAME }}
+
     runs-on: ubuntu-latest
     environment: production
 
@@ -32,16 +33,16 @@ jobs:
       with:
         terraform_wrapper: false
 
-    - run: terraform init
+    - run: Terraform init
     
     - name: Terraform fmt
       id: fmt
-      run: terraform fmt -check
+      run: Terraform fmt -check
       continue-on-error: true
 
     - name: Terraform Plan
       id: plan
-      run: terraform plan -no-color -out=terraform.tfplan
+      run: Terraform plan -no-color -out=terraform.tfplan
 
     - name: Terraform Apply
       id: apply
