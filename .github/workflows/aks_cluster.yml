@@ -3,7 +3,7 @@ on: [workflow_dispatch]
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'terraform'
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
@@ -33,16 +33,16 @@ jobs:
       with:
         terraform_wrapper: false
 
-    - run: Terraform init
+    - run: terraform init
     
     - name: Terraform fmt
       id: fmt
-      run: Terraform fmt -check
+      run: terraform fmt -check
       continue-on-error: true
 
     - name: Terraform Plan
       id: plan
-      run: Terraform plan -no-color -out=terraform.tfplan
+      run: terraform plan -no-color -out=terraform.tfplan
 
     - name: Terraform Apply
       id: apply
